@@ -16,7 +16,7 @@ dst_path=$2
 dst_preffix=$3
 
 file_name=${srs_path##*/}
-indexes="a" "b" "c" "d" "e"
+indexes="c"
 
 password='1111'
 
@@ -25,4 +25,11 @@ for index in $indexes;
     dst=${dst_preffix}-${index}.local:${dst_path}/${file_name}
     echo $dst
     sshpass -p ${password} rsync -av --progress --ignore-existing ${srs_path} $dst
+
+    sshpass -p ${password} rsync --checksum --dry-run B${srs_path} $dst
+
+    #sshpass -p ${password} rsync -Pah --checksum ${srs_path} $dst | tee crc_out.txt
+
+    #sshpass -p ${password} crc32 $dst
+    echo $?
   done
