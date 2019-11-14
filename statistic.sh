@@ -18,7 +18,7 @@ FAILED_TODAY=$(sudo -u postgres psql -d device_provisioning -c "SELECT count(*) 
 #                   sudo -u postgres psql -d device_provisioning -c "SELECT creation_time FROM device ORDER BY device_id DESC LIMIT 1" -A -t 2>/dev/null
 LAST_RECORT_DATE=$(sudo -u postgres psql -d  device_provisioning -c "SELECT creation_time  FROM device ORDER BY device_id DESC LIMIT 1" -A -t 2> /dev/null)
 
-dt=` date '+%d/%m/%Y %H:%M:%S'`
+dt=` date '+%Y-%m-%d %H:%M:%S'`
 echo "Date: $dt"
 #echo "___________________________"
 echo "Total: $TOTAL" 
@@ -35,4 +35,4 @@ echo "Total provision not completted: $TOTAL_PROVISION_NOT_COMPLETED"
 
 #LAST_RECORT_DATE="${LAST_RECORT_DATE%.*}"
 
-echo "Last record date: "${LAST_RECORT_DATE%.*}""
+echo "Last provision date: "${LAST_RECORT_DATE%.*}""
