@@ -1,0 +1,1 @@
+sshpass -p 1111 ssh pi@plughub-factory-server projects/tools/statistic.sh

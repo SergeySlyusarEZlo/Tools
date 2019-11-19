@@ -37,7 +37,7 @@ summary(){
 }
 
 extendedInfo(){
-	for index in $indexes; 
+     for index in $indexes; 
       do
         echo "Detail info calibrator ${index^^}:"
         full_info ${index}
@@ -46,15 +46,13 @@ extendedInfo(){
 }
 
 full_info(){
-
   sshpass -p 1111 ssh $HOST_PREFIX-$1.local $statistic_sh
+  echo "Last log lines:"
   sshpass -p 1111 ssh $HOST_PREFIX-$1.local tail -n -5 $log_file
 }
 
 wait_key_press(){
-   echo
    read -n1 -r -p "Press and key" key
-   echo
 }
 
 #main:
